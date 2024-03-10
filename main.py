@@ -36,9 +36,9 @@ with col3:
     st.text('631255110288541183')
 
 st.write("**Benefits of H3:**")
-st.text("- Allows for more efficient access and operations with spatial objects.")
-st.text("- Supports 16 different resolutions.")
-st.text("- Enables simpler and more efficient geospatial algorithms and visualizations at scale")
+st.write("- Allows for more efficient access and operations with spatial objects.")
+st.write("- Supports 16 different resolutions.")
+st.write("- Enables simpler and more efficient geospatial algorithms and visualizations at scale")
 
 # ------ Visualisation 1 ---------
 @st.cache_resource(ttl="4d")
