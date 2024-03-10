@@ -17,7 +17,7 @@ session = Session.builder.configs(st.secrets["geodemo"]).create()
 st.markdown("H3 Discrete Global Grid (Spatial Index) is a way to divide the world into a grid of hexagonal cells of equal sizes, "
             "each with a unique identifier (string or integer).") 
     
-col1, col2, col3 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 with col1:
     st.write("**String**")
     st.text('8c274daeb7a0bff')
