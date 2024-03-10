@@ -16,7 +16,7 @@ session = Session.builder.configs(st.secrets["geodemo"]).create()
 
 col1, col2 = st.columns([0.7, 0.3])
 with col1:
-    st.markdown("H3 Discrete Global Grid is a way to divide the world into a grid of hexagonal cells of equal sizes, "
+    st.markdown("H3 Discrete Global Grid (Spatial Index) is a way to divide the world into a grid of hexagonal cells of equal sizes, "
             "each with a unique identifier (string or integer).") 
 with col2:
     st.image('https://viennadatasciencegroup.at/post/2019-11-21-h3spark/featured.png', 
@@ -35,7 +35,7 @@ with col3:
     st.text('631255110006392319')
     st.text('631255110288541183')
 
-st.write("**Benefits of spatial grid (spatial index) H3:**")
+st.write("**Benefits of H3:**")
 st.text("- Allows for more efficient access and operations with spatial objects.")
 st.text("- Supports 16 different resolutions.")
 st.text("- Enables simpler and more efficient geospatial algorithms and visualizations at scale")
