@@ -18,7 +18,7 @@ st.markdown("H3 Discrete Global Grid (Spatial Index) is a way to divide the worl
             "each with a unique identifier (string or integer).") 
     
 col1, col2, col3 = st.columns(3)
-with col1:
+with col2:
     st.write("**String**")
     st.text('8c274daeb7a0bff')
     st.text('8c2ab2d9294c5ff')
@@ -30,7 +30,7 @@ with col3:
     st.text('631255110006392319')
     st.text('631255110288541183')
 
-with col2:
+with col1:
     st.image('https://viennadatasciencegroup.at/post/2019-11-21-h3spark/featured.png',  width=150)
 
 st.write("- Hierarchical structure with 16 different resolutions.")
