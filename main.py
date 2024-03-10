@@ -103,10 +103,11 @@ st.pydeck_chart(
     )
 )
 
-st.write("Key Benefits:")
+st.write("**Key Benefits:**")
 st.write("**Efficiency.** Analytics are faster and more computationally efficient.")
-st.write("- Each point or area on the Earth's surface can be encoded.")
-st.write("- Enables the use of simpler and more efficient geospatial algorithms and visualizations.")
+st.write("**Flexibility.** Combining datasets into one layer for ease of comparison and analysis.")
+st.write("**Objectivity.** Remove bias associated with traditional administrative geographies.")
+st.write("**Impact.** Visually more impactful and much easier to understand.")
 
 # ------ Visualisation 1 End ---------
 st.divider()
