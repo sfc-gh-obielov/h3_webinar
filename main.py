@@ -22,7 +22,7 @@ with col1:
             "each with a unique identifier (string or integer).") 
 with col2:
     st.image('https://viennadatasciencegroup.at/post/2019-11-21-h3spark/featured.png', 
-         width=180)
+         width=150)
     
 col1, col2, col3, col4 = st.columns(4)
 with col2:
@@ -37,9 +37,9 @@ with col3:
     st.text('631255110006392319')
     st.text('631255110288541183')
 
-st.markdown("Benefits of spatial grid (spatial index):"
-            "- Allows for more efficient access and operations with spatial objects."
-            "- Supports 16 different resolutions."
+st.markdown("Benefits of spatial grid (spatial index) H3:\n"
+            "- Allows for more efficient access and operations with spatial objects.\n"
+            "- Supports 16 different resolutions.\n"
             "- Enables simpler and more efficient geospatial algorithms and visualizations at scale")
 
 # ------ Visualisation 1 ---------
