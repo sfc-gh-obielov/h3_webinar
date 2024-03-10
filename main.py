@@ -24,13 +24,13 @@ with col1:
     st.text('8c2ab2d9294c5ff')
     st.text('8c2ab2da36605ff')
 
-with col2:
+with col3:
     st.write("**Integer**")
     st.text('631195381387627519')
     st.text('631255110006392319')
     st.text('631255110288541183')
 
-with col3:
+with col2:
     st.image('https://viennadatasciencegroup.at/post/2019-11-21-h3spark/featured.png',  width=150)
 
 st.write("- Hierarchical structure with 16 different resolutions.")
