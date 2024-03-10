@@ -102,6 +102,12 @@ st.pydeck_chart(
         layers=visible_layers_coverage_1,
     )
 )
+
+st.write("Key Benefits:")
+st.write("**Efficiency.** Analytics are faster and more computationally efficient.")
+st.write("- Each point or area on the Earth's surface can be encoded.")
+st.write("- Enables the use of simpler and more efficient geospatial algorithms and visualizations.")
+
 # ------ Visualisation 1 End ---------
 st.divider()
 st.subheader("H3 in Snowflake")
