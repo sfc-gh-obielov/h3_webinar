@@ -406,7 +406,7 @@ col1, col2 = st.columns(2)
 with col1:
     h3_resolution_5 = st.slider(
         "H3 resolution    ",
-        min_value=1, max_value=6, value=2)
+        min_value=1, max_value=3, value=1)
 
 with col2:
     style_option_5 = st.selectbox("Style schema  ",
