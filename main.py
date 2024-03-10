@@ -14,26 +14,24 @@ st.header("What is H3", divider="rainbow")
 session = Session.builder.configs(st.secrets["geodemo"]).create()
 # st.set_page_config(page_title="H3 in Streamlit", layout="wide")
 
-col1, col2 = st.columns([0.7, 0.3])
-with col1:
-    st.markdown("H3 Discrete Global Grid (Spatial Index) is a way to divide the world into a grid of hexagonal cells of equal sizes, "
+st.markdown("H3 Discrete Global Grid (Spatial Index) is a way to divide the world into a grid of hexagonal cells of equal sizes, "
             "each with a unique identifier (string or integer).") 
-with col2:
-    st.image('https://viennadatasciencegroup.at/post/2019-11-21-h3spark/featured.png', 
-         width=150)
     
-col1, col2, col3, col4 = st.columns(4)
-with col2:
+col1, col2, col3 = st.columns(4)
+with col1:
     st.write("**String**")
     st.text('8c274daeb7a0bff')
     st.text('8c2ab2d9294c5ff')
     st.text('8c2ab2da36605ff')
 
-with col3:
+with col2:
     st.write("**Integer**")
     st.text('631195381387627519')
     st.text('631255110006392319')
     st.text('631255110288541183')
+
+with col3:
+    st.image('https://viennadatasciencegroup.at/post/2019-11-21-h3spark/featured.png',  width=150)
 
 st.write("- Each point or area on the Earth's surface can be encoded.")
 st.write("- Hierarchical structure with 16 different resolutions.")
