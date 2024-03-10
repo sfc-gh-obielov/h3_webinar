@@ -31,7 +31,7 @@ with col3:
     st.text('631255110288541183')
 
 with col1:
-    st.image('https://viennadatasciencegroup.at/post/2019-11-21-h3spark/featured.png',  width=170)
+    st.image('https://viennadatasciencegroup.at/post/2019-11-21-h3spark/featured.png',  width=160)
 
 st.write("- Hierarchical structure with 16 different resolutions.")
 st.write("- Each point or area on the Earth's surface can be encoded.")
