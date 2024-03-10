@@ -9,12 +9,10 @@ import json
 from PIL import Image
 image = Image.open('./favicon.png')
 st.set_page_config(page_title="H3: Simplifying the World's Map", page_icon=image)
-st.header("H3: Simplifying the World's Map", divider="rainbow")
+st.header("What is H3", divider="rainbow")
 
 session = Session.builder.configs(st.secrets["geodemo"]).create()
 # st.set_page_config(page_title="H3 in Streamlit", layout="wide")
-
-st.subheader("What is H3")
 
 col1, col2 = st.columns([0.7, 0.3])
 with col1:
