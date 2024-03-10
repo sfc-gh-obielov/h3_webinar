@@ -459,10 +459,4 @@ st.pydeck_chart(pdk.Deck(map_provider='carto', map_style='light',
     initial_view_state=pdk.ViewState(
         latitude=38.51405689475766,
         longitude=-96.50284957885742, pitch=50, zoom=3),
-                         tooltip={
-        'html': '<b>Cell towers:</b> {COUNT}',
-        'style': {
-            'color': 'white'
-        }
-    },
-    layers=[layer_5]))
+        layers=[layer_5]))
