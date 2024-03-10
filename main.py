@@ -429,7 +429,7 @@ def get_layer_5(df: pd.DataFrame) -> pdk.Layer:
                      elevation_scale=45,
                      pickable=True,
                      elevation_range=[0, 3000],
-                     extruded=False,
+                     extruded=True,
                      coverage=1,
                      opacity=0.5)
     
