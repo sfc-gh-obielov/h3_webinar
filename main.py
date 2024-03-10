@@ -401,6 +401,72 @@ st.divider()
 
 st.subheader("Login locations of Snowflake customers ")
 
+@st.cache_resource(ttl="4d")
+def get_df_5(resolution: int) -> pd.DataFrame:
+    return session.sql(f'select h3_point_to_cell_string(location, {h3_resolution_5}) as h3, sum(count) as count\n'\
+                       'from snowpublic.streamlit.h3_ip\n'\
+                        'group by 1\n'\
+                        'order by 2 desc').to_pandas()
+
+@st.cache_resource(ttl="4d")
+def get_quantiles_5(df_column: pd.Series, quantiles: List) -> pd.Series:
+    return df_column.quantile(quantiles)
+
+@st.cache_resource(ttl="4d")
+def get_color_5(df_column: pd.Series, colors: List, vmin: int, vmax: int, index: pd.Series) -> pd.Series:
+    color_map = cm.LinearColormap(colors, vmin=vmin, vmax=vmax, index=index)
+    return df_column.apply(color_map.rgb_bytes_tuple)
+
+@st.cache_resource(ttl="4d")
+def get_layer_5(df: pd.DataFrame) -> pdk.Layer:
+    return pdk.Layer("H3HexagonLayer", 
+                     df, 
+                     get_hexagon="H3",
+                     get_fill_color="COLOR", 
+                     get_line_color="COLOR",
+                     get_elevation="COUNT",
+                     auto_highlight=True,
+                     elevation_scale=50,
+                     pickable=True,
+                     elevation_range=[0, 3000],
+                     extruded=False,
+                     coverage=1,
+                     opacity=0.5)
+    
+col1, col2 = st.columns(2)
+
+with col1:
+    h3_resolution_5 = st.slider("H3 resolution     ", min_value=2, max_value=7, value=2)
+
+with col2:
+    style_option_5 = st.selectbox("Style schema     ", ("Contrast", "Snowflake"), index=0)
+
+df_5 = get_df_5(h3_resolution_5)
+
+if style_option_5 == "Contrast":
+    quantiles_5 = get_quantiles_5(df_5["COUNT"], [0, 0.25, 0.5, 0.75, 1])
+    colors_5 = ['gray','blue','green','yellow','orange','red']
+    st.image('./img/gradient_c.png')
+if style_option_5 == "Snowflake":
+    quantiles_5 = get_quantiles_5(df_5["COUNT"], [0, 0.33, 0.66, 1])
+    colors_5 = ['#666666', '#24BFF2', '#126481', '#D966FF']
+    st.image('./img/gradient_sf.jpg')
+
+df_5['COLOR'] = get_color_5(df_5['COUNT'], colors_5, quantiles_5.min(), quantiles_5.max(), quantiles_5)
+layer_5 = get_layer_5(df_5)
+
+st.pydeck_chart(pdk.Deck(map_provider='carto', map_style='light',
+    initial_view_state=pdk.ViewState(
+        latitude=38.51405689475766,
+        longitude=-96.50284957885742, zoom=3),
+                         tooltip={
+        'html': '<b>Cell towers:</b> {COUNT}',
+        'style': {
+            'color': 'white'
+        }
+    },
+    layers=[layer_5]))
+
 # ------ Visualisation 6 ---------
 col1, col2 = st.columns(2)
 with col1:
