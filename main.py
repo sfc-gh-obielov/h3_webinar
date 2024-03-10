@@ -105,9 +105,9 @@ st.pydeck_chart(
 
 st.write("**Key Benefits:**")
 st.write("**Efficiency.** Analytics are faster and more computationally efficient.")
-st.write("**Flexibility.** Combining datasets into one layer for ease of comparison and analysis.")
-st.write("**Objectivity.** Remove bias associated with traditional administrative geographies.")
-st.write("**Impact.** Visually more impactful and much easier to understand.")
+st.write("**Flexibility.** Allows for the combination of datasets into one layer for ease of comparison and analysis.")
+st.write("**Objectivity.** Removes bias associated with traditional administrative geographies.")
+st.write("**Impact.** Results in visuals that are more impactful and much easier to understand.")
 
 # ------ Visualisation 1 End ---------
 st.divider()
