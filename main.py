@@ -424,9 +424,9 @@ def get_layer_5(df: pd.DataFrame) -> pdk.Layer:
                      get_hexagon="H3",
                      get_fill_color="COLOR", 
                      get_line_color="COLOR",
-                     get_elevation="COUNT",
+                     get_elevation="COUNT/200",
                      auto_highlight=True,
-                     elevation_scale=50,
+                     elevation_scale=45,
                      pickable=True,
                      elevation_range=[0, 3000],
                      extruded=False,
@@ -466,52 +466,3 @@ st.pydeck_chart(pdk.Deck(map_provider='carto', map_style='light',
         }
     },
     layers=[layer_5]))
-
-# ------ Visualisation 6 ---------
-col1, col2 = st.columns(2)
-with col1:
-    h3_resolution_5 = st.slider(
-        "H3 resolution    ",
-        min_value=1, max_value=3, value=1)
-
-with col2:
-    style_option_5 = st.selectbox("Style schema  ",
-                                ("Contrast", "Snowflake"), 
-                                index=0)
-
-df_5 = session.sql(f'select h3_point_to_cell_string(location, {h3_resolution_5}) as h3, sum(count) as count\n'\
-'from snowpublic.streamlit.h3_ip\n'\
-'group by 1\n'\
-'order by 2 desc').to_pandas()
-
-if style_option_5 == "Contrast":
-    quantiles_5 = df_5["COUNT"].quantile([0, 0.25, 0.5, 0.75, 1])
-    colors_5 = ['gray','blue','green','yellow','orange','red']
-if style_option_5 == "Snowflake":
-    quantiles_5 = df_5["COUNT"].quantile([0, 0.33, 0.66, 1])
-    colors_5 = ['#666666', '#24BFF2', '#126481', '#D966FF']
-
-color_map_5 = cm.LinearColormap(colors_5, vmin=quantiles_5.min(), vmax=quantiles_5.max(), index=quantiles_5)
-df_5['COLOR'] = df_5['COUNT'].apply(color_map_5.rgb_bytes_tuple)
-st.image('https://sfquickstarts-obielov.s3.us-west-2.amazonaws.com/streamlit/gradient.png')
-st.pydeck_chart(pdk.Deck( map_style=None,
-    initial_view_state=pdk.ViewState(
-        latitude=38.51405689475766,
-        longitude=-94.50284957885742, pitch=50, zoom=3),
-        tooltip={
-        'html': '<b>Sessions:</b> {COUNT}',
-        'style': {
-            'color': 'white'
-        }
-    },
-    layers=[pdk.Layer("H3HexagonLayer", df_5, get_hexagon="H3",
-                      get_fill_color="COLOR", 
-                      get_line_color="COLOR",
-                      get_elevation="COUNT/200",
-                      auto_highlight=True,
-    elevation_scale=45,
-    pickable=True,
-    elevation_range=[0, 3000],
-    extruded=True,
-                      coverage=1,
-                      opacity=0.5)]))
