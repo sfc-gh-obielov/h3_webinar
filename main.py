@@ -103,7 +103,9 @@ st.pydeck_chart(
     )
 )
 
-st.write("**Key Benefits:**")
+col1, col2, col3 = st.columns(3)
+with col2:
+    st.write("**Key Benefits:**")
 st.write("**Efficiency.** Analytics are faster and more computationally efficient.")
 st.write("**Flexibility.** Allows for the combination of datasets into one layer for ease of comparison and analysis.")
 st.write("**Objectivity.** Removes bias associated with traditional administrative geographies.")
