@@ -436,7 +436,7 @@ def get_layer_5(df: pd.DataFrame) -> pdk.Layer:
 col1, col2 = st.columns(2)
 
 with col1:
-    h3_resolution_5 = st.slider("H3 resolution       ", min_value=2, max_value=7, value=2)
+    h3_resolution_5 = st.slider("H3 resolution       ", min_value=1, max_value=3, value=2)
 
 with col2:
     style_option_5 = st.selectbox("Style schema       ", ("Contrast", "Snowflake"), index=0)
