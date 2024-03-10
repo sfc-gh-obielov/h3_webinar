@@ -36,8 +36,8 @@ with col3:
     st.text('631255110288541183')
 
 st.write("- Each point or area on the Earth's surface can be encoded.")
-st.write("- Hierarchical with 16 different resolutions.")
-st.write("- Enables use of simpler and efficient geospatial algorithms and visualizations")
+st.write("- Hierarchical structure with 16 different resolutions.")
+st.write("- Enables the use of simpler and more efficient geospatial algorithms and visualizations.")
 
 # ------ Visualisation 1 ---------
 @st.cache_resource(ttl="4d")
