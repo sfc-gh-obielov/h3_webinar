@@ -19,8 +19,7 @@ st.subheader("What is H3")
 col1, col2 = st.columns([0.7, 0.3])
 with col1:
     st.markdown("H3 Discrete Global Grid is a way to divide the world into a grid of hexagonal cells of equal sizes, "
-            "each with a unique identifier (string or integer). It is a hierarchical grid, meaning that cells can be "
-            "aggregated into larger cells, and vice versa. This makes it very efficient for processing geospatial data.") 
+            "each with a unique identifier (string or integer).") 
 with col2:
     st.image('https://viennadatasciencegroup.at/post/2019-11-21-h3spark/featured.png', 
          width=180)
@@ -38,10 +37,10 @@ with col3:
     st.text('631255110006392319')
     st.text('631255110288541183')
 
-st.markdown("The lowest resolution is 0, at which the world is divided into 122 hexagons. "
-            "The highest resolution is 15, at which the size of a hexagon is less than a square meter, "
-            "and the world can be divided into approximately 600 trillion hexagons."
-            " You can check different resolutions and play with hierarchy levels using the widget below. Hover on hexagons to see their IDs.")
+st.markdown("Benefits of spatial grid (spatial index):"
+            "- Allows for more efficient access and operations with spatial objects."
+            "- Supports 16 different resolutions."
+            "- Enables simpler and more efficient geospatial algorithms and visualizations at scale")
 
 # ------ Visualisation 1 ---------
 @st.cache_resource(ttl="4d")
