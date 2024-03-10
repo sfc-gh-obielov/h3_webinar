@@ -255,6 +255,7 @@ st.markdown("""**Delivery & quick commerce.** To evaluate business critical perf
 **Geomarketing and Advertising.** To optimize high volume marketing campaigns by locating customers & prospects, and understanding temporal patterns.""")
 
 # ------ Visualisation 3 ---------
+st.subheader("Taxi pickups")
 @st.cache_resource(ttl="4d")
 def get_df_3(h3_resolut_3: int) -> pd.DataFrame:
     return session.sql(f'select h3_point_to_cell_string(pickup_location, {h3_resolut_3}) as h3, count(*) as count\n'\
@@ -326,17 +327,7 @@ st.pydeck_chart(pdk.Deck(map_provider='carto',  map_style='light',
 # ------ Visualisation 3 End ---------
 
 st.divider()
-st.subheader("Telecommunication")
-
-st.write(
-  """Another industry that likes H3 is Telecommunication. They speed up queries by replacing geospatial lookups 
-  and joins with similar operations using integer IDs of cells. For example when they calculate the mobile coverage of the road network. 
-  See example in the [Geospatial Quickstart](https://quickstarts.snowflake.com/guide/geo_analysis_geometry/index.html?index=..%2F..index#6) (Step 7).
-  Widget below visualizes 4G network coverage in the US using [OpenCellID dataset](https://app.snowflake.com/marketplace/listing/GZSVZ8ON6J/dataconsulting-pl-opencellid-open-database-of-cell-towers?search=opencellid) 
-  from Snowflake Marketplace. Try different resolutions to see how the size of cells can impact the insights.
-  """)
-
-
+st.subheader("Network coverage")
 # ------ Visualisation 4 ---------
 @st.cache_resource(ttl="4d")
 def get_df_4(resolution: int) -> pd.DataFrame:
