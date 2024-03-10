@@ -112,29 +112,24 @@ st.write("**Impact.** Results in visuals that are more impactful and much easier
 # ------ Visualisation 1 End ---------
 st.divider()
 st.subheader("H3 in Snowflake")
-st.write("""
-    In Snowflake, we have implemented nineteen H3 functions. The most popular ones among our customers are those 
-    that convert a Latitude/Longitude pair or a GEOGRAPHY Point to H3 Cell ID ([H3_LATLNG_TO_CELL](https://docs.snowflake.com/sql-reference/functions/h3_latlng_to_cell) 
-    and [H3_POINT_TO_CELL](https://docs.snowflake.com/sql-reference/functions/h3_point_to_cell)), 
-    get the boundary of an H3 Cell ([H3_CELL_TO_BOUNDARY](https://docs.snowflake.com/sql-reference/functions/h3_cell_to_boundary)), 
-    or obtain the coordinates of the centers of H3 Cells ([H3_CELL_TO_POINT](https://docs.snowflake.com/sql-reference/functions/h3_cell_to_point)). 
-    However, they also use more complex functions, namely H3_COVERAGE and H3_POLYGON_TO_CELLS.""")
-st.write("""
-    [H3_COVERAGE](https://docs.snowflake.com/sql-reference/functions/h3_coverage) provides full coverage of a polygon with H3 cells, meaning that 
-    it returns all the H3 cells that intersect with the given polygon. 
-    This is particularly useful when you need a comprehensive representation of a spatial area.
-     Additionaly, just like Snowflake's GEOGRAPHY data type, H3_COVERAGE utilizes spherical geometry for its calculations. 
-     It means it considers the ellipsoidal nature of the Earth when determining which H3 cells intersect with a given polygon.
-    This is especialy important when you work with spatial objects on the global scale, e.g tessellate shapes of countries.""")
-st.write("""
-    In contrast, the [H3_POLYGON_TO_CELLS](https://docs.snowflake.com/sql-reference/functions/h3_polygon_to_cells)
-    function is centroid-based. It returns the H3 cells whose centroids are within the specified polygon. 
-    And unlike H3_COVERAGE it operates on planar geometry.
-     It assumes a flat surface for its calculations, which simplifies the processing but can introduce distortions, especially over large areas.""")
-st.write("""
-    Explore the differences between these two functions at both global and local scales using the provided widget.
-    Compare the functions' results against the initial (Light Purple) polygon to understand their behavior.""")
-
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.text('H3_LATLNG_TO_CELL')
+    st.text('H3_POINT_TO_CELL')
+    st.text('H3_CELL_TO_POINT')
+    st.text('H3_CELL_TO_CHILDREN')
+    st.text('H3_CELL_TO_PARENT')
+with col2:
+    st.text('H3_COVERAGE')
+    st.text('H3_POLYGON_TO_CELLS')
+    st.text('H3_GRID_DISTANCE')
+    st.text('H3_GRID_DISK')
+    st.text('H3_GRID_PATH')
+with col3:
+    st.text('H3_CELL_TO_BOUNDARY')
+    st.text('H3_GET_RESOLUTION')
+    st.text('H3_INT_TO_STRING')
+    st.text('H3_STRING_TO_INT')
 
 # ------ Visualisation 2 ---------
 col1, col2, col3 = st.columns(3)
