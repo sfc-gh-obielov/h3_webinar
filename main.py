@@ -248,7 +248,7 @@ st.divider()
 
 st.header("How are organizations using Spatial Indexes?")
 
-st.markdown("""Delivery & quick commerce - To evaluate business critical performance indicators such as delivery delays and errors.\n
+st.markdown("""*Delivery & quick commerce.* To evaluate business critical performance indicators such as delivery delays and errors.\n
 Logistics & fleet management - To optimize routings, delivery times and better manage fleets.\n
 Telecoms - To process and analyze massive network performance data volumes and generate unique customer usage insights. \n
 Sustainability & climate resilience - To overcome the processing limitations and costs associated with handling and visualizing large raster datasets.
