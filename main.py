@@ -255,6 +255,7 @@ st.markdown("""**Delivery & quick commerce.** To evaluate business critical perf
 **Geomarketing and Advertising.** To optimize high volume marketing campaigns by locating customers & prospects, and understanding temporal patterns.""")
 
 # ------ Visualisation 3 ---------
+st.divider()
 st.subheader("Taxi pickups")
 @st.cache_resource(ttl="4d")
 def get_df_3(h3_resolut_3: int) -> pd.DataFrame:
