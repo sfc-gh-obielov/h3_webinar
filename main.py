@@ -33,8 +33,8 @@ with col2:
 with col3:
     st.image('https://viennadatasciencegroup.at/post/2019-11-21-h3spark/featured.png',  width=150)
 
-st.write("- Each point or area on the Earth's surface can be encoded.")
 st.write("- Hierarchical structure with 16 different resolutions.")
+st.write("- Each point or area on the Earth's surface can be encoded.")
 st.write("- Enables the use of simpler and more efficient geospatial algorithms and visualizations.")
 
 # ------ Visualisation 1 ---------
