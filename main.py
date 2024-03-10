@@ -398,13 +398,55 @@ st.pydeck_chart(pdk.Deck(map_provider='carto', map_style='light',
 
 # ------ Visualisation 6 End ---------
 st.divider()
-st.markdown("The world of geospatial data is vast and complex, but with tools like H3, it becomes more accessible and manageable. "
-            "If you're a seasoned data analyst or a GIS professional, the H3 functions can be a valuable addition to your toolkit."
-            " If you just store addresses or latitude and longitude as separate columns and want to start capitalizing on your geospatial data, "
-            "the H3 functions is probably the easiest way to do so. We encourage you to try out them "
-            "and discover the many ways they can enhance your spatial data processing and analysis. Happy mapping!")
+st.divider()
 
-col1, col2, col_3 = st.columns(3)
+st.subheader("Login locations of Snowflake customers ")
+
+# ------ Visualisation 6 ---------
+col1, col2 = st.columns(2)
+with col1:
+    h3_resolution_5 = st.slider(
+        "H3 resolution    ",
+        min_value=1, max_value=6, value=2)
+
 with col2:
-    st.image('https://sfquickstarts-obielov.s3.us-west-2.amazonaws.com/streamlit/snowflake_h3.jpg', 
-         width=173)
+    style_option_5 = st.selectbox("Style schema  ",
+                                ("Contrast", "Snowflake"), 
+                                index=0)
+
+df_5 = session.sql(f'select h3_point_to_cell_string(location, {h3_resolution_5}) as h3, sum(count) as count\n'\
+'from snowpublic.streamlit.h3_ip\n'\
+'group by 1\n'\
+'order by 2 desc').to_pandas()
+
+if style_option_5 == "Contrast":
+    quantiles_5 = df_5["COUNT"].quantile([0, 0.25, 0.5, 0.75, 1])
+    colors_5 = ['gray','blue','green','yellow','orange','red']
+if style_option_5 == "Snowflake":
+    quantiles_5 = df_5["COUNT"].quantile([0, 0.33, 0.66, 1])
+    colors_5 = ['#666666', '#24BFF2', '#126481', '#D966FF']
+
+color_map_5 = cm.LinearColormap(colors_5, vmin=quantiles_5.min(), vmax=quantiles_5.max(), index=quantiles_5)
+df_5['COLOR'] = df_5['COUNT'].apply(color_map_5.rgb_bytes_tuple)
+st.image('https://sfquickstarts-obielov.s3.us-west-2.amazonaws.com/streamlit/gradient.png')
+st.pydeck_chart(pdk.Deck( map_style=None,
+    initial_view_state=pdk.ViewState(
+        latitude=38.51405689475766,
+        longitude=-94.50284957885742, pitch=50, zoom=3),
+        tooltip={
+        'html': '<b>Sessions:</b> {COUNT}',
+        'style': {
+            'color': 'white'
+        }
+    },
+    layers=[pdk.Layer("H3HexagonLayer", df_5, get_hexagon="H3",
+                      get_fill_color="COLOR", 
+                      get_line_color="COLOR",
+                      get_elevation="COUNT/200",
+                      auto_highlight=True,
+    elevation_scale=45,
+    pickable=True,
+    elevation_range=[0, 3000],
+    extruded=True,
+                      coverage=1,
+                      opacity=0.5)]))
