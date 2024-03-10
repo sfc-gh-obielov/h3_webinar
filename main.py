@@ -246,27 +246,13 @@ with col2:
 # ------ Visualisation 2 End ---------
 st.divider()
 
-st.header("Use Cases")
+st.header("How are organizations using Spatial Indexes?")
 
-st.markdown("Many companies use H3 grid today. Some of them use it for analytical and machine learning use cases"
-            " when they do aggregations using cells of the same size to calculate statistics and visualize them or train "
-            "prediction models. Others speed up queries by replacing geospatial lookups and joins "
-            "with similar operations using IDs of H3 cells.")
-
-st.markdown("However, even if you don't use spatial joins or don't have machine learning use cases, you likely "
-            "store some geographic locations, typically as latitude and longitude pairs. The beauty of the H3 grid"
-            " is in its simplicity and effectiveness in extracting value from such data. It offers an accessible way to start "
-            "visualizing your geographic data, making it a versatile tool for many applications. Below are just a few use cases"
-            " that show opportunities behind using H3 grid.")
-
-st.subheader("Urban Mobility and Food Delivery")
-
-st.markdown("These two industries are likely the most active in using the H3 grid. Sometimes H3 cell is used to calculate demand and supply in near-real time  "
-            "and then predict those values for a future time interval. "
-            "Since it's a fixed gread, meaning each Cell ID always points to the same geographical area, cell ID might be a valuable feature for ML models."
-            " The most popular cell resolutions are probably 7 or 8 with the size of hexagons 0.5-5 sq.km."
-            " Check below for the aggregated taxi pickup events of New York Taxi. To which area does this surge in Manhattan correspond?"
-            " Is it Times Square?")
+st.markdown("""Delivery & quick commerce - To evaluate business critical performance indicators such as delivery delays and errors.
+Logistics & fleet management - To optimize routings, delivery times and better manage fleets.
+Telecoms - To process and analyze massive network performance data volumes and generate unique customer usage insights. 
+Sustainability & climate resilience - To overcome the processing limitations and costs associated with handling and visualizing large raster datasets.
+Geomarketing and Advertising  - To optimize high volume marketing campaigns by locating customers & prospects, and understanding temporal patterns.""")
 
 # ------ Visualisation 3 ---------
 @st.cache_resource(ttl="4d")
