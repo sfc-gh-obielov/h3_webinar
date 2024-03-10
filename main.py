@@ -398,7 +398,6 @@ st.pydeck_chart(pdk.Deck(map_provider='carto', map_style='light',
 
 # ------ Visualisation 6 End ---------
 st.divider()
-st.divider()
 
 st.subheader("Login locations of Snowflake customers ")
 
