@@ -68,7 +68,7 @@ with col1:
         "H3 resolution", min_value=min_v_1, max_value=max_v_1, value=v_1)
 
 with col2:
-    levels_option = st.selectbox("Levels", ("One", "Two", "Three"))
+    levels_option = st.selectbox("Levels", ("One", "Two", "Three"), 1)
 
 df = get_h3point_df(h3_resolut_1, 100000)
 layer_coverage_1 = get_coverage_layer(df, [36, 191, 242])
