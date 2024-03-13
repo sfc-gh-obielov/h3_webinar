@@ -332,10 +332,7 @@ st.subheader("Network coverage")
 # ------ Visualisation 4 ---------
 @st.cache_resource(ttl="4d")
 def get_df_4(resolution: int) -> pd.DataFrame:
-    return session.sql(f'select h3_latlng_to_cell_string(lat, lon, {resolution}) as h3, count(*) as count\n'\
-                       'from OPENCELLID.PUBLIC.RAW_CELL_TOWERS\n'\
-                        'where mcc between 310 and 316\n'\
-                            'group by 1').to_pandas()
+    return session.sql(f'select * from snowpublic.streamlit.h3_celltowers_webinar').to_pandas()
 
 @st.cache_resource(ttl="4d")
 def get_quantiles_4(df_column: pd.Series, quantiles: List) -> pd.Series:
