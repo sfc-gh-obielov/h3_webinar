@@ -403,10 +403,7 @@ st.subheader("Login locations of Snowflake customers ")
 
 @st.cache_resource(ttl="4d")
 def get_df_5(resolution: int) -> pd.DataFrame:
-    return session.sql(f'select h3_point_to_cell_string(location, {h3_resolution_5}) as h3, sum(count) as count\n'\
-                       'from snowpublic.streamlit.h3_ip\n'\
-                        'group by 1\n'\
-                        'order by 2 desc').to_pandas()
+    return session.sql(f'select * from snowpublic.streamlit.h3_ip_webinar').to_pandas()
 
 @st.cache_resource(ttl="4d")
 def get_quantiles_5(df_column: pd.Series, quantiles: List) -> pd.Series:
