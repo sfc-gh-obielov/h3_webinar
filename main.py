@@ -117,15 +117,16 @@ with col1:
     st.text('H3_LATLNG_TO_CELL')
     st.text('H3_POINT_TO_CELL')
     st.text('H3_CELL_TO_POINT')
-    st.text('H3_CELL_TO_CHILDREN')
-    st.text('H3_CELL_TO_PARENT')
-with col2:
     st.text('H3_COVERAGE')
     st.text('H3_POLYGON_TO_CELLS')
+with col2:
     st.text('H3_GRID_DISTANCE')
     st.text('H3_GRID_DISK')
     st.text('H3_GRID_PATH')
+    st.text('H3_CELL_TO_CHILDREN')
+    st.text('H3_CELL_TO_PARENT')
 with col3:
+
     st.text('H3_CELL_TO_BOUNDARY')
     st.text('H3_GET_RESOLUTION')
     st.text('H3_INT_TO_STRING')
